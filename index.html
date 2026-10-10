@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GULSHAN Jewellers - Catalog Manager</title>
+    <meta
+      name="description"
+      content="Luxury jewellery catalog manager for GULSHAN Jewellers"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand-name">GULSHAN Jewellers</div>
+        <div class="brand-since">Since 1998</div>
+      </div>
+
+      <ul class="category-list" id="categoryList" aria-label="Categories"></ul>
+
+      <button class="add-cat-btn" type="button" onclick="addCategory()">
+        + Add Category
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <h2 id="currentCategoryTitle">Rings</h2>
+        </div>
+
+        <div class="top-bar-actions">
+          <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search designs"
+              aria-label="Search designs"
+            />
+          </div>
+          <button class="btn" type="button" onclick="openAddModal()">
+            + Add New Design
+          </button>
+        </div>
+      </header>
+
+      <section class="content-body">
+        <div class="items-panel">
+          <div class="items-toolbar">
+            <span id="itemsCount">0 items</span>
+          </div>
+          <div class="items-grid-container" id="itemsGrid"></div>
+        </div>
+
+        <aside class="item-detail-panel" id="detailPanel" aria-live="polite">
+          <div class="detail-header">
+            <h3 id="detailTitle">Item Details</h3>
+            <div class="detail-actions">
+              <button class="btn btn-secondary" type="button" onclick="editCurrentItem()">
+                Edit
+              </button>
+              <button class="btn btn-danger" type="button" onclick="deleteCurrentItem()">
+                Delete
+              </button>
+            </div>
+          </div>
+
+          <img id="mainPreviewImg" class="main-preview" src="" alt="Product preview" />
+          <div class="detail-images" id="thumbnailGallery"></div>
+
+          <table class="specs-table">
+            <tr><td>Category</td><td id="detCat">-</td></tr>
+            <tr><td>Brand / Stamp</td><td id="detBrand">-</td></tr>
+            <tr><td>Metal Type</td><td id="detMetal">-</td></tr>
+            <tr><td>Gross Weight</td><td id="detWeight">-</td></tr>
+            <tr><td>Purity</td><td id="detPurity">-</td></tr>
+            <tr><td>Est. Price</td><td id="detPrice">-</td></tr>
+          </table>
+        </aside>
+      </section>
+    </main>
+
+    <div class="modal" id="addModal" aria-hidden="true">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header">
+          <h3 id="modalTitle">Add New Jewellery Design</h3>
+          <button class="close-btn" type="button" onclick="closeAddModal()" aria-label="Close">
+            ×
+          </button>
+        </div>
+
+        <form id="itemForm">
+          <div class="form-group">
+            <label for="inputName">Design Name / Code</label>
+            <input type="text" id="inputName" placeholder="e.g., Royal Diamond Ring" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputCategory">Category</label>
+            <select id="inputCategory"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="inputBrand">Brand / Hallmark Stamp</label>
+            <input type="text" id="inputBrand" placeholder="e.g., BIS 916 / HUID" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputMetal">Metal & Purity</label>
+            <input type="text" id="inputMetal" placeholder="e.g., 18K Yellow Gold" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputWeight">Weight (Grams)</label>
+            <input type="text" id="inputWeight" placeholder="e.g., 12.50 g" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputPurity">Purity</label>
+            <input type="text" id="inputPurity" placeholder="e.g., 18K / 22K" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputPrice">Price (INR)</label>
+            <input type="text" id="inputPrice" placeholder="e.g., ₹85,000" />
+          </div>
+
+          <div class="form-group">
+            <label for="inputPhotos">Upload Photos</label>
+            <input type="file" id="inputPhotos" multiple accept="image/*" />
+          </div>
+
+          <div class="modal-actions">
+            <button class="btn btn-secondary" type="button" onclick="closeAddModal()">
+              Cancel
+            </button>
+            <button class="btn" type="submit">Save Item</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
